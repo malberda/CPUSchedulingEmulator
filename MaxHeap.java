@@ -26,7 +26,21 @@ public class MaxHeap
 		return (position*2+1);
 	}
 
+	private void swap(int posOne, int posTwo)
+	{
+		MaxHeap temp;
+		temp=Heap[posOne];
+		Heap[posOne]=Heap[posTwo];
+		Heap[posTwo]=temp;
+		return;
+	}
 
+
+
+	private void maxHeapify(int position)
+	{
+
+	}
 
 
 }
