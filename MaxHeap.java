@@ -11,6 +11,14 @@ public class MaxHeap
 		Heap=new MaxHeap[this.maxSize];
 	}
 
+	private boolean isLeaf(int position)
+	{
+		if(position>(size/2) && position <= size)
+		{
+			return true;
+		}
+		return false;
+	}
 	private int parentPosition(int position)
 	{
 		return (position-1)/2;
@@ -35,11 +43,9 @@ public class MaxHeap
 		return;
 	}
 
-
-
 	private void maxHeapify(int position)
 	{
-		if(isleaf(position))
+		if(isLeaf(position))
 		{
 			return;
 		}
@@ -59,10 +65,60 @@ public class MaxHeap
 		}
 	}
 
-	private int heapComparison(Heap one, Heap two)
+	private int heapComparison(MaxHeap one, MaxHeap two)
 	{
 		return 1;//need to fix this
 	}
+
+	public void insert(MaxHeap value)
+	{
+		Heap[size]=value;
+
+		int current=size;
+		while(heapComparison(Heap[current],Heap[parentPosition(current)])>0)
+		{
+			swap(current,parentPosition(current));
+			current=parentPosition(current);
+		}
+		size++;
+	}
+
+
+	public int extractMax()
+	{
+		MaxHeap popped=Heap[1];
+		Heap[1]=eap[size--];
+		maxHeapify(1);
+		return popped;
+	}
+
+	public void print()
+	{
+		for(int i=0;i<=size/2;i++)
+		{
+			System.out.print("parent: "Heap[i]+ " left child: "+Heap[2*i+1]
+				+" right child: "+Heap[2*i+2]);
+			System.out.println();
+		}
+	}
+
+	public static void main(String[] arg)
+	{
+		MaxHeap maxHeap=new MaxHeap(15);
+
+		maxHeap.insert(5);
+		maxHeap.insert(3);
+		maxHeap.insert(17);
+		maxHeap.insert(10);
+		maxHeap.insert(84);
+		maxHeap.insert(19);
+		maxHeap.insert(6);
+		maxHeap.insert(522);
+		maxHeap.insert(9);
+	}
+
+		maxHeap.print();
+
 
 
 }
