@@ -13,19 +13,14 @@ public class Process
 		this.timeNotProcessed=0;
 	}
 
-	public int compareTo(int a, int b)
+	public int compareTo(Process b)
 	{
-		if (a<b)
-			return -1;
-		else if (a>b)
-			return 1;
-		else
-			return 0;
+		return 1;
 	}
 
 	public void reduceTimeRemaining()
 	{
-
+		this.timeRemaining--;
 	}
 
 	public boolean finish()
@@ -56,6 +51,18 @@ public class Process
 		this.timeNotProcessed=0;
 	}
 
+	public void updateEachJob(int timeToIncrementLevel, int maxLevel)
+	{
+		this.timeNotProcessed++;
+		if(timeNotProcessed>=timeToIncrementLevel)
+		{
+			timeNotProcessed=0;
+			if(this.priority<maxLevel)
+			{
+				this.priority++;
+			}
+		}
+	}
 
 
 }

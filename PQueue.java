@@ -1,25 +1,28 @@
 public class PQueue
 {
-	
+	private MaxHeap heap;
 
-	public PQueue()
+	public PQueue(int maxPriorityLevel)
 	{
-
+		this.heap=new MaxHeap(maxPriorityLevel);
 	}
 
 	public boolean isEmpty()
 	{
-
+		if(heap.getSize()==0)
+			return true;
+		else
+			return false;
 	}
 
-	public something enPQueue(Process P)
+	public void enPQueue(Process P)
 	{
-
+		heap.insert(P);
 	}
 
-	public something dePQueue()
+	public Process dePQueue()
 	{
-
+		return heap.extractMax();
 	}
 
 	public void update(int timeToIncrementLevel, int maxLevel)

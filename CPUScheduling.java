@@ -39,7 +39,7 @@ class CPUScheduling
 		("Illegal argument: simulationTime must >= 1.");
 	double probability = Double.parseDouble(args[4]);
 		
-	PQueue pqueue = new PQueue();
+	PQueue pqueue = new PQueue(maxLevel);
 	Averager averager = new Averager();
 	ProcessGenerator pGenerator = new ProcessGenerator(probability);
 

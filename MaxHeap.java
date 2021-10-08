@@ -1,6 +1,6 @@
 public class MaxHeap
 {
-	private MaxHeap [] Heap;
+	private Process[] Heap;
 	private int size;
 	private int maxSize;
 
@@ -8,7 +8,12 @@ public class MaxHeap
 	{
 		this.size=0;
 		this.maxSize=maxPriorityLevel;
-		Heap=new MaxHeap[this.maxSize];
+		this.Heap=new Process[this.maxSize];
+	}
+
+	public int getSize()
+	{
+		return this.size;
 	}
 
 	private boolean isLeaf(int position)
@@ -36,7 +41,7 @@ public class MaxHeap
 
 	private void swap(int posOne, int posTwo)
 	{
-		MaxHeap temp;
+		Process temp;
 		temp=Heap[posOne];
 		Heap[posOne]=Heap[posTwo];
 		Heap[posTwo]=temp;
@@ -49,10 +54,10 @@ public class MaxHeap
 		{
 			return;
 		}
-		if(heapComparison(Heap[position],Heap[leftChildPosition(position)])<0 || 
-		   heapComparison(Heap[position],Heap[rightChildPosition(position)])<0)
+		if(Heap[position].compareTo(Heap[leftChildPosition(position)])<0 || 
+		   Heap[position].compareTo(Heap[rightChildPosition(position)])<0)
 		{
-			if(heapComparison(Heap[leftChildPosition(position)],Heap[rightChildPosition(position)])>0)
+			if(Heap[leftChildPosition(position)].compareTo(Heap[rightChildPosition(position)])>0)
 			{
 				swap(position,leftChildPosition(position));
 				maxHeapify(leftChildPosition(position));
@@ -65,17 +70,12 @@ public class MaxHeap
 		}
 	}
 
-	private int heapComparison(MaxHeap one, MaxHeap two)
-	{
-		return 1;//need to fix this
-	}
-
-	public void insert(MaxHeap value)
+	public void insert(Process value)
 	{
 		Heap[size]=value;
 
 		int current=size;
-		while(heapComparison(Heap[current],Heap[parentPosition(current)])>0)
+		while(Heap[current].compareTo(Heap[parentPosition(current)])>0)
 		{
 			swap(current,parentPosition(current));
 			current=parentPosition(current);
@@ -84,16 +84,22 @@ public class MaxHeap
 	}
 
 
-	public MaxHeap extractMax()
+	public Process extractMax()
 	{
-		MaxHeap popped=Heap[1];
+		Process popped=Heap[1];
 		Heap[1]=Heap[size--];
 		maxHeapify(1);
 		return popped;
 	}
 
-
-
+	public void updateRemaining(int timeToIncrementLevel,int maxLevel)
+	{
+		for(int i=0;i<size;i++)
+		{
+			Heap[i].updateEachJob(timeToIncrementLevel,maxLevel);//this is is process.java
+		}
+		maxHeapify(1);
+	}
 
 
 }
