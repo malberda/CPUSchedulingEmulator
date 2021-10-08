@@ -25,7 +25,7 @@ public class ProcessGenerator
 		{
 			randomNumber=Math.random();
 		}
-		int time=(int)randomNumber;
+		double saveNumber=randomNumber;
 
 		randomNumber=Math.random();
 		while(randomNumber==0)
@@ -33,8 +33,7 @@ public class ProcessGenerator
 			randomNumber=Math.random();
 		}
 
-		int priority=(int)randomNumber;
-		Process proc=new Process(maxLevel*priority, maxTime*time, currTime);
+		Process proc=new Process((int)((double)maxLevel*randomNumber+1), (int)((double)maxTime*saveNumber+1), currTime);
 		return proc;
 	}
 

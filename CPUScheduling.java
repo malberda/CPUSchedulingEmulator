@@ -65,6 +65,7 @@ class CPUScheduling
 		if (!pqueue.isEmpty())
 		    {
 			Process next = pqueue.dePQueue();
+			
 			next.reduceTimeRemaining();
 			pqueue.update(timeToIncrementLevel, maxLevel);
 			if (arrival)
