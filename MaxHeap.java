@@ -84,40 +84,15 @@ public class MaxHeap
 	}
 
 
-	public int extractMax()
+	public MaxHeap extractMax()
 	{
 		MaxHeap popped=Heap[1];
-		Heap[1]=eap[size--];
+		Heap[1]=Heap[size--];
 		maxHeapify(1);
 		return popped;
 	}
 
-	public void print()
-	{
-		for(int i=0;i<=size/2;i++)
-		{
-			System.out.print("parent: "Heap[i]+ " left child: "+Heap[2*i+1]
-				+" right child: "+Heap[2*i+2]);
-			System.out.println();
-		}
-	}
 
-	public static void main(String[] arg)
-	{
-		MaxHeap maxHeap=new MaxHeap(15);
-
-		maxHeap.insert(5);
-		maxHeap.insert(3);
-		maxHeap.insert(17);
-		maxHeap.insert(10);
-		maxHeap.insert(84);
-		maxHeap.insert(19);
-		maxHeap.insert(6);
-		maxHeap.insert(522);
-		maxHeap.insert(9);
-	}
-
-		maxHeap.print();
 
 
 
