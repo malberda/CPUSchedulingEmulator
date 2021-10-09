@@ -17,6 +17,15 @@ public class Process
 		this.timeNotProcessed=0;
 	}
 
+
+	public void copy(int a, int b, int c, int d)
+	{
+		this.priority=a;
+		this.timeRemaining=b;
+		this.arrivalTime=c;
+		this.timeNotProcessed=d;
+	}
+
 //comparison returns a 0 if basic is less than b, 1 if this is >b, and 0 if equal
 	public int compareTo(Process b)
 	{
@@ -42,9 +51,7 @@ public class Process
 //reduces timeRemaining
 	public void reduceTimeRemaining()
 	{
-		System.out.println("help");
 		this.timeRemaining--;
-		System.out.println("me");
 		return;
 	}
 
@@ -80,13 +87,16 @@ public class Process
 	{
 		this.timeNotProcessed=0;
 	}
+	public int getTimeNotProcessed()
+	{
+		return this.timeNotProcessed;
+	}
+
 
 //updates process
 	public void updateEachJob(int timeToIncrementLevel, int maxLevel)
 	{
-		System.out.println("1");
 		this.timeNotProcessed++;
-		System.out.println("2");
 		if(timeNotProcessed>=timeToIncrementLevel)
 		{
 			timeNotProcessed=0;
@@ -95,6 +105,12 @@ public class Process
 				this.priority++;
 			}
 		}
+	}
+
+	public void print()
+	{
+		System.out.println("JOB: "+ this.arrivalTime+" with timerequired: "+this.timeRemaining+" with priority: "+this.priority);
+		return;
 	}
 
 

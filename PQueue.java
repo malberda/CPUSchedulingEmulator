@@ -3,9 +3,9 @@ public class PQueue
 	private MaxHeap heap;
 
 //constructor for PQueue
-	public PQueue(int maxPriorityLevel)
+	public PQueue(int simulationTime)
 	{
-		this.heap=new MaxHeap(maxPriorityLevel);
+		this.heap=new MaxHeap(simulationTime);
 	}
 
 //returns whether the heap is empty
@@ -20,7 +20,6 @@ public class PQueue
 	public void enPQueue(Process P)
 	{
 		heap.insert(P);
-		heap.maxHeapify(1);
 	}
 
 //removes the top of the heap and returns it
@@ -37,6 +36,10 @@ public class PQueue
 	}
 
 	
+	public void print()
+	{
+		heap.print();
+	}
 
 	
 }

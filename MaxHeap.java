@@ -1,3 +1,6 @@
+//import java.util.ArrayList;
+
+
 public class MaxHeap
 {
 //self explanitory 
@@ -6,10 +9,10 @@ public class MaxHeap
 	private int maxSize;
 
 //constructor for heap
-	public MaxHeap(int maxPriorityLevel)
+	public MaxHeap(int simulationTime)
 	{
 		this.size=0;
-		this.maxSize=maxPriorityLevel;
+		this.maxSize=simulationTime;
 		this.Heap=new Process[this.maxSize];
 	}
 
@@ -72,6 +75,9 @@ public class MaxHeap
 		}
 //		System.out.println("is not a leaf");
 
+		if(size==1)
+			return;
+
 
 		if(Heap[position].compareTo(Heap[leftChildPosition(position)])==0 || 
 		   Heap[position].compareTo(Heap[rightChildPosition(position)])==0)
@@ -93,37 +99,49 @@ public class MaxHeap
 	public void insert(Process value)
 	{
 		Heap[size]=value;
-
 		int current=size;
 		while(Heap[current].compareTo(Heap[parentPosition(current)])==1)
 		{
 			swap(current,parentPosition(current));
 			current=parentPosition(current);
 		}
-//		System.out.println("size is "+size);
 		size++;
-//		System.out.println("size is "+size);
 		return;
 	}
 
 //pops and returns max priority value
 	public Process extractMax()
 	{
-		System.out.println("extracting max, size is "+size);
 		Process popped=Heap[0];
-		Heap[0]=Heap[size--];
+//		System.out.println("pre extractions size is "+this.size);
+		Heap[0]=Heap[size-1];
+		size=size-1;
+//		System.out.println("post extractions size is "+this.size);
+//		System.out.println("extracted job "+popped.getArrivalTime());
 		if(getSize()>0)
+		{
+//			System.out.println("about to heapify");
 			maxHeapify(0);
+		}
+		
 		return popped;
 	}
 
 //updates each node in heap
 	public void updateRemaining(int timeToIncrementLevel,int maxLevel)
 	{
-		for(int i=1;i<size;i++)
+//		System.out.println("size is "+size);
+		for(int i=0;i<size;i++)
 		{
-			System.out.println("update");
 			Heap[i].updateEachJob(timeToIncrementLevel,maxLevel);//this is is process.java
+		}
+	}
+
+	public void print()
+	{
+		for(int i=0;i<size;i++)
+		{
+			Heap[i].print();
 		}
 	}
 

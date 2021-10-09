@@ -39,7 +39,7 @@ class CPUScheduling
 		("Illegal argument: simulationTime must >= 1.");
 	double probability = Double.parseDouble(args[4]);
 		
-	PQueue pqueue = new PQueue(maxLevel);
+	PQueue pqueue = new PQueue(simulationTime);
 	Averager averager = new Averager();
 	ProcessGenerator pGenerator = new ProcessGenerator(probability);
 
@@ -64,9 +64,13 @@ class CPUScheduling
 		// processes in the priority queue.
 		if (!pqueue.isEmpty())
 		    {
+//			pqueue.print();
 			Process next = pqueue.dePQueue();
-			
+//			pqueue.print();
+//			System.out.println("before");
 			next.reduceTimeRemaining();
+//			pqueue.print();
+//			System.out.println("in between");
 			pqueue.update(timeToIncrementLevel, maxLevel);
 			if (arrival)
 			    System.out.print("\t    ");
