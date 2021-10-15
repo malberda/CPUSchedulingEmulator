@@ -5,47 +5,27 @@ Description
 
 A simple simulation of CPU scheduling using a max heap abstract data type using an array, and a priority queue.
 uses other classes as well
-Getting Started
-Dependencies
 
-    Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-    ex. Windows 10
+Getting Started
+
 
 Executing program
+run javac *.java
 
 
 
-code blocks for commands
+run java CPUScheduling a b c d e
+where
+a=maxProcessTime            - maximum time for a process to require
+b=maxPriorityLevel          - maximum allowed preiority level
+c=timeToIncrementPriority   - amount of time priority increases each "second"
+d=simulationTime            - how long to run in 'seconds'
+e=processArrivalRate        - from 0-1 like 0.4 percent odds of a new process arriving
 
-Help
 
-Any advise for common problems or issues.
+I was unable to get the generic version of MaxHeap working. i could not call Process.compareTo or Process.update, and after a few days of that just reverted to this version of the code. 
 
-command to run if program contains helper info
 
 Authors
 
-Contributors names and contact info
-
-ex. Dominique Pizzie
-ex. @DomPizzie
-Version History
-
-    0.2
-        Various bug fixes and optimizations
-        See commit change or See release history
-    0.1
-        Initial Release
-
-License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-Acknowledgments
-
-Inspiration, code snippets, etc.
-
-    awesome-readme
-    PurpleBooth
-    dbader
-    zenorocha
-    fvcproductions
+Michael Alberda @malberda
