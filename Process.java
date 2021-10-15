@@ -17,29 +17,32 @@ public class Process
 		this.timeNotProcessed=0;
 	}
 
-
-	public void copy(int a, int b, int c, int d)
+//dont think i ended up using this
+/*	public void copy(int a, int b, int c, int d)
 	{
 		this.priority=a;
 		this.timeRemaining=b;
 		this.arrivalTime=c;
 		this.timeNotProcessed=d;
-	}
+	}*/
 
 //comparison returns a 0 if basic is less than b, 1 if this is >b, and 0 if equal
 	public int compareTo(Process b)
 	{
-//		System.out.println("trying to compare two");
-//		System.out.print("comparing "+this.getPriority()+" to ");
+		//checking to see which has higher priority, and if both are equal, then which has been in longer
 		try
-		{
-//			System.out.println(b.getPriority());	
+		{	
 			if(this.priority<b.getPriority())
 				return 0;
 			else if(this.priority>b.getPriority())
 				return 1;
 			else
-				return 0;//if equal		
+			{
+				if(this.arrivalTime<b.getArrivalTime())
+					return 1;
+				else
+					return 0;		
+			}
 		}
 		catch(Exception e)
 		{
@@ -107,11 +110,12 @@ public class Process
 		}
 	}
 
-	public void print()
+	//testing function
+/*	public void print()
 	{
 		System.out.println("JOB: "+ this.arrivalTime+" with timerequired: "+this.timeRemaining+" with priority: "+this.priority);
 		return;
-	}
+	}*/
 
 
 }

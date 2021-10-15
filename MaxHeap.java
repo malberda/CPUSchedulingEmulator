@@ -63,19 +63,17 @@ public class MaxHeap
 //maxheapifies stuff
 	public void maxHeapify(int position)
 	{
-
-		//System.out.println("maxheapify size is " + getSize() + " position is "+position);
+	//checks to see if posiiton is a leaf, if ti is then dont bother
 		if(isLeaf(position))
 		{
-//			System.out.println("is a leaf");
 			return;
 		}
-//		System.out.println("is not a leaf");
 
+	//if only node return, this is in case isLeaf doesnt work
 		if(size==1)
 			return;
 
-
+	//comparison function
 		if(Heap[position].compareTo(Heap[leftChildPosition(position)])==0 || 
 		   Heap[position].compareTo(Heap[rightChildPosition(position)])==0)
 		{
@@ -134,13 +132,15 @@ public class MaxHeap
 		}
 	}
 
-	public void print()
+
+//testing function
+/*	public void print()
 	{
 		for(int i=0;i<size;i++)
 		{
 			Heap[i].print();
 		}
-	}
+	}*/
 
 
 }

@@ -35,11 +35,11 @@ public class PQueue
 		return;
 	}
 
-	
-	public void print()
+	//testing function
+/*	public void print()
 	{
 		heap.print();
-	}
+	}*/
 
 	
 }
